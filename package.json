@@ -1,0 +1,25 @@
+{
+  "name": "express_todo",
+  "version": "1.0.0",
+  "description": "I denne opgave skal du bygge en lille webserver med Express.js, der kan håndtere en liste over opgaver (TODOs). Formålet er at give dig praktisk erfaring med at opsætte en server, definere ruter og arbejde med data i JSON-format. Du skal starte med at oprette et nyt projekt, installere Express og sætte en server op, der kan lytte på en port.",
+  "homepage": "https://github.com/rts-cmk/expressjs-todo-ShidoSetsuna#readme",
+  "bugs": {
+    "url": "https://github.com/rts-cmk/expressjs-todo-ShidoSetsuna/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rts-cmk/expressjs-todo-ShidoSetsuna.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "server": "nodemon server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "nodemon": "^3.1.11"
+  }
+}
