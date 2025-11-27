@@ -49,14 +49,14 @@ async function initializeRealtimeDBWithTodos() {
       }
 
       await set(todosRef, todosList);
-      console.log("✅ Realtime Database initialized with todos from todo.json");
+      console.log("Realtime Database initialized with todos from todo.json");
     } else {
       console.log(
-        "✅ Realtime Database already contains data. Skipping initialization."
+        "Realtime Database already contains data. Skipping initialization."
       );
     }
   } catch (error) {
-    console.error("❌ Error initializing Realtime Database:", error);
+    console.error("Error initializing Realtime Database:", error);
   }
 }
 
