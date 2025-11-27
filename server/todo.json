@@ -1,0 +1,30 @@
+{
+	"not started": {
+		"work": [
+			{
+				"id": 1,
+				"title": "Sample Todo",
+				"description": "This is a sample todo item."
+			}
+		],
+		"personal": []
+	},
+	"in-progress": {
+		"shopping": [
+			{
+				"id": 2,
+				"title": "Buy groceries",
+				"description": "Milk, eggs, bread."
+			}
+		]
+	},
+	"completed": {
+		"work": [
+			{
+				"id": 3,
+				"title": "Finish report",
+				"description": "Submit by Friday."
+			}
+		]
+	}
+}
