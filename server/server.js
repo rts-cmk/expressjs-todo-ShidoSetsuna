@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, set, get, remove } from "firebase/database";
+import { getDatabase, ref, get, set, remove } from "firebase/database";
 import express from "express";
 import cors from "cors";
 import fs from "fs";
@@ -22,46 +22,46 @@ const firebaseConfig = {
 const firebaseApp = initializeApp(firebaseConfig);
 const db = getDatabase(firebaseApp);
 
-// Initialize Realtime Database with todo.json if empty (ONE TIME ONLY)
-async function initializeRealtimeDBWithTodos() {
-  try {
-    const todosRef = ref(db, "todos");
-    const snapshot = await get(todosRef);
+// // Initialize Realtime Database with todo.json if empty (ONE TIME ONLY)
+// async function initializeRealtimeDBWithTodos() {
+//   try {
+//     const todosRef = ref(db, "todos");
+//     const snapshot = await get(todosRef);
 
-    if (!snapshot.exists()) {
-      console.log("Realtime Database is empty. Initializing with todo.json...");
-      const todosData = JSON.parse(fs.readFileSync("./todo.json", "utf-8"));
+//     if (!snapshot.exists()) {
+//       console.log("Realtime Database is empty. Initializing with todo.json...");
+//       const todosData = JSON.parse(fs.readFileSync("./todo.json", "utf-8"));
 
-      // Convert nested structure to flat list with all todos
-      const todosList = {};
-      for (const status of Object.keys(todosData)) {
-        for (const category of Object.keys(todosData[status])) {
-          for (const todo of todosData[status][category]) {
-            todosList[todo.id] = {
-              id: todo.id,
-              title: todo.title,
-              description: todo.description || "",
-              status: status,
-              category: category,
-            };
-          }
-        }
-      }
+//       // Convert nested structure to flat list with all todos
+//       const todosList = {};
+//       for (const status of Object.keys(todosData)) {
+//         for (const category of Object.keys(todosData[status])) {
+//           for (const todo of todosData[status][category]) {
+//             todosList[todo.id] = {
+//               id: todo.id,
+//               title: todo.title,
+//               description: todo.description || "",
+//               status: status,
+//               category: category,
+//             };
+//           }
+//         }
+//       }
 
-      await set(todosRef, todosList);
-      console.log("Realtime Database initialized with todos from todo.json");
-    } else {
-      console.log(
-        "Realtime Database already contains data. Skipping initialization."
-      );
-    }
-  } catch (error) {
-    console.error("Error initializing Realtime Database:", error);
-  }
-}
+//       await set(todosRef, todosList);
+//       console.log("Realtime Database initialized with todos from todo.json");
+//     } else {
+//       console.log(
+//         "Realtime Database already contains data. Skipping initialization."
+//       );
+//     }
+//   } catch (error) {
+//     console.error("Error initializing Realtime Database:", error);
+//   }
+// }
 
-// Call the initialization function
-initializeRealtimeDBWithTodos();
+// // Call the initialization function
+// initializeRealtimeDBWithTodos();
 
 const app = express();
 const PORT = 3000;
