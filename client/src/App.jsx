@@ -13,12 +13,6 @@ function App() {
     status: "not started",
   });
 
-  const statusBadgeClasses = {
-    "not started": "bg-[#6c757d] text-white",
-    "in-progress": "bg-yellow-400 text-[#333]",
-    completed: "bg-green-600 text-white",
-  };
-
   // Fetch all todos on mount
   useEffect(() => {
     fetchTodos();

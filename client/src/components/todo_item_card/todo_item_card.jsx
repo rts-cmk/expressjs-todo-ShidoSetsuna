@@ -8,8 +8,8 @@ export default function TodoItemCard({ todo, onStatusChange, onDelete }) {
             todo.status === "not started"
               ? "bg-gray-500 text-white"
               : todo.status === "in-progress"
-              ? "bg-yellow-500 text-white"
-              : "bg-green-500 text-white"
+              ? "bg-yellow-400 text-white"
+              : "bg-green-400 text-white"
           }`}>
           {todo.status}
         </span>
