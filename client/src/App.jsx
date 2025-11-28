@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { todoAPI } from "./services/api";
+import TodoItemCard from "./components/todo_item_card/todo_item_card";
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -146,38 +147,12 @@ function App() {
           <p>No todos yet. Create one above!</p>
         ) : (
           todos.map((todo) => (
-            <div
+            <TodoItemCard
               key={todo.id}
-              className="bg-white border border-[#ddd] p-4 mb-4 rounded-lg shadow">
-              <div className="flex items-center gap-2.5 mb-2.5">
-                <h3 className="m-0 flex-1">{todo.title}</h3>
-                <span
-                  className={`px-2 py-1 rounded text-xs font-bold ${
-                    statusBadgeClasses[todo.status]
-                  }`}>
-                  {todo.status}
-                </span>
-                <span className="px-2 py-1 rounded text-xs font-bold bg-cyan-700 text-white">
-                  {todo.category}
-                </span>
-              </div>
-              <p>{todo.description}</p>
-              <div className="flex gap-2.5 mt-2.5">
-                <select
-                  value={todo.status}
-                  onChange={(e) => handleStatusChange(todo.id, e.target.value)}
-                  className="flex-1 p-2 border border-[#ddd] rounded">
-                  <option value="not started">Not Started</option>
-                  <option value="in-progress">In Progress</option>
-                  <option value="completed">Completed</option>
-                </select>
-                <button
-                  onClick={() => handleDeleteTodo(todo.id)}
-                  className="bg-red-600 text-white border-none px-4 py-2 rounded cursor-pointer hover:bg-red-800">
-                  Delete
-                </button>
-              </div>
-            </div>
+              todo={todo}
+              onStatusChange={handleStatusChange}
+              onDelete={handleDeleteTodo}
+            />
           ))
         )}
       </div>
